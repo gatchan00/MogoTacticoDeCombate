@@ -50,12 +50,12 @@ def mainLoop(clientCol, polizasCol, statusCol, inputFile,lastCheckpoint,customer
             if totalCustomersProcessed % customersPerBulk == 0:
                 print("Begin to write batch for: "+str(totalCustomersProcessed))
                 clientCol.bulk_write(mongoOperations)
-                print("Finish writting batch for: " + str(totalCustomersProcessed))
+                print("Finish writting batch for: " + str(totalCustomersProcessed) + " Last proccessed Customer: " + str(currentCustomer))
                 statusCol.update_one({'processId': 'MongoTacticoDeCombate'}, {'$set': {'latestCustomer': currentCustomer}}, upsert=True)
         #Al acabar, lanzo el bulk con las operaciones pendientes
         print("Begin to write final batch: "+str(totalCustomersProcessed))
         clientCol.bulk_write(mongoOperations)
-        print("Finish writting final batch: " + str(totalCustomersProcessed))
+        print("Finish writting final batch: " + str(totalCustomersProcessed) + " Last proccessed Customer: " + str(currentCustomer))
         statusCol.update_one({'processId': 'MongoTacticoDeCombate'}, {'$set': {'latestCustomer': currentCustomer}}, upsert=True)
 
 if __name__ == '__main__':
