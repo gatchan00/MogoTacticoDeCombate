@@ -1,8 +1,8 @@
 #CONFIG
-inputFile = 'F:\\everis\\mongoaxa\\Mapfre-Sandbox\\Id_clientesOrd.txt'
+inputFile = 'F:\\Id_clientesOrd.txt'
 lastCheckpoint = None
 customersPerBulk = 20000
-mongoConfig = {'fullUrl': None, #"mongodb+srv://mvp_ficha_compass:<password>@cluster-ric-mvp-tu2rr.azure.mongodb.net/<dbname>?retryWrites=true&w=majority"
+mongoConfig = {'fullUrl': None, #"mongodb+srv://mvp_ficha_compass:<password>@algo.mongodb.net/<dbname>?retryWrites=true&w=majority"
                'host': 'localhost',
                'port': 27017,
                'db': 'RIC',
